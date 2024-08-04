@@ -1,0 +1,35 @@
+{% extends 'films/layout.html' %}
+
+{% block title %}
+    <title>Фильмы</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <h1 class="mb-4">Фильмы</h1>
+                {% if films %}
+                    <div class="row">
+                        {% for film in films %}
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ film.title }}</h5>
+                                        <p class="card-text"><strong>Описание:</strong> {{ film.description }}</p>
+                                        <p class="card-text"><strong>Отзыв:</strong> {{ film.review }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading">На данный момент нет отзывов</h4>
+                        <p>Пожалуйста, добавьте первый отзыв, нажав на кнопку "Добавить отзыв".</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
